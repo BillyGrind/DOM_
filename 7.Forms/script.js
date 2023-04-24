@@ -23,7 +23,7 @@ let pwdConfirm = document.getElementById("pwd-confirm");
 pwd.onkeyup = function () {
   if (pwd.value.length <= 6) {
     pwd.style.backgroundColor = "red";
-    alert("Password is too short");
+    alert("password is too short");
   } else {
     pwd.style.backgroundColor = "initial";
   }
@@ -44,7 +44,7 @@ darkMode.addEventListener("change", () => {
   if (darkMode.value === "dark") {
     document.querySelector("body").style.backgroundColor = "black";
     document.querySelector("body").style.color = "white";
-  } else if (darkMode.value === "light"){
+  } else if (darkMode.value === "light") {
     document.querySelector("body").style.backgroundColor = "white";
     document.querySelector("body").style.color = "black";
   }

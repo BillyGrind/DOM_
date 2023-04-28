@@ -24,14 +24,39 @@ for (i = 0; i < childrenLi.length; i++) {
   }
 }
 
-//Create a new Div , firstchild of the body
+//Create a new Div , firstchild of the body with select option
 let newDiv = document.createElement("div");
 body.insertBefore(newDiv, body.firstChild);
+//create select
 let select = document.createElement("select");
 newDiv.appendChild(select);
-let option = document.createElement("option");
-option.textContent="Important Franchises";
-select.add(option);
+//create base option
+let optionZero = document.createElement("option");
+optionZero.textContent = "Choose your Option";
+optionZero.value = "Choose your Option";
+select.appendChild(optionZero);
+// create option1
+let optionUn = document.createElement("option");
+optionUn.textContent = "Important Franchises";
+optionUn.value = "Important Franchises";
+select.appendChild(optionUn);
+// create option2
 let optionDeux = document.createElement("option");
-optionDeux.textContent="Normal Franchises";
-select.add(optionDeux);
+optionDeux.textContent = "Normal Franchises";
+optionDeux.value = "Normal Franchises";
+select.appendChild(optionDeux);
+// select event change
+let movies = document.querySelectorAll("li");
+select.addEventListener("change", () => {
+  if (select.value === "Important Franchises") {
+    movies.forEach((elem) => {
+      if (elem.classList != "important") {
+        elem.style.visibility = "hidden";
+      }
+    });
+  } else {
+    movies.forEach((elem) => {
+      elem.style.visibility = "visible";
+    });
+  }
+});

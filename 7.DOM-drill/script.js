@@ -2,7 +2,14 @@
 let body = document.querySelector("body");
 let list = document.querySelector("ul");
 let childrenLi = list.childNodes;
-let duplicates = [];
+//Loop for EqualNode
+for (let i = 0; i < childrenLi.length; i++) {
+    for (let j = i + 1; j < childrenLi.length; j++) {
+      if (childrenLi[i].isEqualNode(childrenLi[j])) {
+        childrenLi[j].parentNode.removeChild(childrenLi[j]);
+      }
+    }
+  }
 //Loop for Nodes
 for (i = 0; i < childrenLi.length; i++) {
   let child = childrenLi[i];
@@ -23,7 +30,6 @@ for (i = 0; i < childrenLi.length; i++) {
     list.insertBefore(child, list.firstChild);
     child.classList.add("important");
   }
-  
 }
 //------------------------------------------------------------------
 //Create a new Div , firstchild of the body with select option

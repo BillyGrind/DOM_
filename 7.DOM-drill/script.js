@@ -2,14 +2,15 @@
 let body = document.querySelector("body");
 let list = document.querySelector("ul");
 let childrenLi = list.childNodes;
+console.log(list.children);
 //Loop for EqualNode
 for (let i = 0; i < childrenLi.length; i++) {
-    for (let j = i + 1; j < childrenLi.length; j++) {
-      if (childrenLi[i].isEqualNode(childrenLi[j])) {
-        childrenLi[j].parentNode.removeChild(childrenLi[j]);
-      }
+  for (let j = i + 1; j < childrenLi.length; j++) {
+    if (childrenLi[i].isEqualNode(childrenLi[j])) {
+      childrenLi[j].parentNode.removeChild(childrenLi[j]);
     }
   }
+}
 //Loop for Nodes
 for (i = 0; i < childrenLi.length; i++) {
   let child = childrenLi[i];
@@ -71,3 +72,31 @@ select.addEventListener("change", () => {
 
 //------------------------------------------------------------------------
 //Bonus
+//Add Instruction for keyup
+let sectionInstruction = document.createElement("section");
+let instructionContent = `
+<p class="instructionContent">Tap "r" for randomize the list</p>
+<p class="instructionContent">Tap "d" for Clone Fast and Furious</p>
+`;
+sectionInstruction.innerHTML += instructionContent;
+newDiv.appendChild(sectionInstruction);
+// add keyup
+body.addEventListener("keyup", (event) => {
+  if (event.key === "r") {
+    for (let i = childrenLi.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [childrenLi[i], childrenLi[j]] = [childrenLi[i], childrenLi[i]];
+      console.log(childrenLi);
+    }
+    //   } else if (event.key === "d") {
+    //     // for (let i = 0; i < childrenLi.length; i++){
+
+    //     // }
+  }
+});
+
+// let importantLi = document.getElementsByClassName("important");
+// let cloneImportantLi = importantLi.cloneNode();
+// // let list = document.querySelector("ul");
+// list.appendChild(cloneImportantLi);
+// console.log(importantLi);
